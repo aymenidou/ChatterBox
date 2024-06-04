@@ -23,8 +23,7 @@ const App = () => {
     <Router>
       <div className="App">
         {token ? <nav>
-          <Link to="/" >Home</Link>
-          <Link to="/logout">Logout</Link>
+          
         </nav>
           :
           <nav>

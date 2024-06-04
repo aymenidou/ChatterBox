@@ -1,9 +1,23 @@
 import React, { useEffect, useState } from 'react';
+import io from 'socket.io-client';
 
 const Chat = ({ token, username, setToken, setUsername }) => {
+  const [socket, setSocket] = useState(null);
 
+
+  useEffect(() => {
+    const newSocket = io('http://localhost:5000', {
+      query: { token }
+    });
+    setSocket(newSocket);
+
+    return () => newSocket.close();
+  }, [token]);
 
   const handleLogout = () => {
+      if (socket) {
+        socket.disconnect();
+      }
     localStorage.removeItem('token');
     localStorage.removeItem('username');
     window.location.href = '/login';
