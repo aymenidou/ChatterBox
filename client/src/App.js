@@ -4,6 +4,10 @@ import Register from './components/Register';
 import Login from './components/Login';
 import Chat from './components/Chat';
 import { Link } from 'react-router-dom';
+// Bootstrap CSS
+import "bootstrap/dist/css/bootstrap.min.css";
+// Bootstrap Bundle JS
+import "bootstrap/dist/js/bootstrap.bundle.min";
 import './App.css';
 
 const App = () => {
@@ -22,15 +26,36 @@ const App = () => {
   return (
     <Router>
       <div className="App">
-        {token ? <nav>
-          
-        </nav>
+        {token ?
+          (<nav className='navbar navbar-expand-lg navbar-light bg-dark'>
+            <div className="container-fluid">
+              <div className="navbar-brand text-white App-logo" >ChatterBox</div>
+
+            </div>
+          </nav>)
           :
-          <nav>
-            <Link to="/" >Home</Link>
-            <Link to="/login">Login</Link>
-            <Link to="/register">Register</Link>
-          </nav>}
+          (<nav className='navbar navbar-expand-lg navbar-light bg-dark'>
+            <div className="container-fluid">
+              <div className="navbar-brand text-white App-logo" >ChatterBox</div>
+              <button className="navbar-toggler btn btn-secondary bg-white" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span className="navbar-toggler-icon"></span>
+              </button>
+              <div className="collapse navbar-collapse" id="navbarNav">
+                <ul className="navbar-nav">
+
+                  <li className="nav-item">
+                    <Link className='nav-link text-white' to="/login" >Login</Link>
+                  </li>
+                  <li className="nav-item">
+                    <Link className='nav-link text-white' to="/register" >Register</Link>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </nav>)
+
+
+        }
 
         <Switch>
           <Route path="/register">

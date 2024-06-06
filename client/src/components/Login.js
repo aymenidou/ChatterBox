@@ -18,12 +18,22 @@ const Login = ({ setToken, setUserId }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <h3>Login</h3>
-      <input type="text" value={username} onChange={(e) => setUsername(e.target.value)} placeholder="Username" />
-      <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Password" />
-      <button type="submit">Login</button>
-    </form>
+    <div className='container   m-auto mt-3'>
+      <form onSubmit={handleSubmit} className='container w-50 p-5 d-flex justify-content-center flex-column'>
+        <div className='p-1'>
+          <h3>Login</h3>
+        </div>
+        <div className='p-1'>
+          <input className='form-control' type="text" value={username} onChange={(e) => setUsername(e.target.value)} placeholder="Username" />
+        </div>
+        <div className='p-1'>
+          <input className='form-control' type="password" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Password" />
+        </div>
+        <div className='p-1'>
+          <button className='btn btn-outline-primary' type="submit">Login</button>
+        </div>
+      </form>
+    </div>
   );
 };
 

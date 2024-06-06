@@ -47,3 +47,28 @@ exports.loginUser = async (req, res) => {
     res.status(500).json({ msg: 'Server error' });
   }
 };
+
+// Update user information
+exports.updateUser = async (req, res) => {
+  const { username, bio } = req.body;
+
+  try {
+    // Find the user by ID (assume the user ID is in the token)
+    const user = await User.findOne({ username });
+
+    if (!user) {
+      return res.status(404).json({ message: 'User not found' });
+    }
+
+    // Update user information
+    user.username = username || user.username;
+    user.bio = bio || user.bio;
+
+    await user.save();
+
+    res.json({ message: 'User information updated successfully', user });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ message: 'Server error' });
+  }
+};
