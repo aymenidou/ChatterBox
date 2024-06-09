@@ -105,17 +105,18 @@ The application should now be running on http://localhost:3000.
     └── README.md
 
 ## Usage
-    ### Register
+    
+### Register
         1. Navigate to http://localhost:3000/register.
         2. Fill in the registration form and submit.
-    ### Login
+### Login
         Navigate to http://localhost:3000/login.
         Fill in the login form and submit.
-    Chat
+### Chat
         After logging in, you will be redirected to the chat interface.
         Create a new room or join an existing room.
         Start chatting in real-time!
-    Edit Profile
+### Edit Profile
         Click the "Edit Profile" button.
         Update your username and bio in the modal.
 ## Technologies Used
