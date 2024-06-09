@@ -18,10 +18,11 @@ const Login = ({ setToken, setUserId }) => {
   };
 
   return (
-    <div className='container   m-auto mt-3'>
+    <div className='container m-auto mt-3'>
       <form onSubmit={handleSubmit} className='container w-50 p-5 d-flex justify-content-center flex-column'>
-        <div className='p-1'>
-          <h3>Login</h3>
+        <div className='p-1 text-center'>
+          <h2>Welcome to ChatterBox</h2>
+          <h3 className=''>Login</h3>
         </div>
         <div className='p-1'>
           <input className='form-control' type="text" value={username} onChange={(e) => setUsername(e.target.value)} placeholder="Username" />

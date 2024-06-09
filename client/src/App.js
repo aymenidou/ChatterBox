@@ -24,8 +24,9 @@ const App = () => {
   };
 
   return (
-    <Router>
-      <div className="App">
+    <div className="App vh-100 d-flex flex-column align-items-stretch">
+      <Router>
+      
         {token ?
           (<nav className='navbar navbar-expand-lg navbar-light bg-dark'>
             <div className="container-fluid">
@@ -53,10 +54,8 @@ const App = () => {
               </div>
             </div>
           </nav>)
-
-
         }
-
+      
         <Switch>
           <Route path="/register">
             {token ? <Chat token={token} username={username} /> : <Register />}
@@ -71,8 +70,8 @@ const App = () => {
             {token ? <Chat token={token} username={username} /> : <Login setToken={handleSetToken} setUserId={handleSetUserId} />}
           </Route>
         </Switch>
-      </div>
-    </Router>
+      </Router>
+    </div>
   );
 };
 

@@ -94,70 +94,70 @@ const Chat = ({ token, username, setToken, setUsername }) => {
 
 
   return (
-    <div className="container-fluid h-100">
-      <div className="row h-100">
-        <div className="col-md-3 p-3 bg-light border-end">
-          <h5>Chat Rooms</h5>
-          <h6>Connected user : {username}</h6>
-          <h6>Bio : </h6>
-          <button className="btn btn-primary mb-3" onClick={handleEditUser}>Edit Profile</button>
-          <button className="btn btn-danger mb-3" onClick={handleLogout}>Logout</button>
-          <div className="mb-4">
-            <select className="form-select" size="7" aria-label="Chat rooms">
-              {rooms.map((room) => (
-                <option key={room._id} onClick={() => handleJoinRoom(room.name)}>
-                  {room.name}
-                </option>
-              ))}
-            </select>
-          </div>
-          <form onSubmit={handleCreateRoom} className="mb-4">
-            <div className="input-group">
-              <input
-                type="text"
-                className="form-control"
-                value={newRoomName}
-                onChange={(e) => setNewRoomName(e.target.value)}
-                placeholder="New room name"
-              />
-              <button type="submit" className="btn btn-primary">Create</button>
-            </div>
-          </form>
-          <hr />
-          <h5>Connected Users</h5>
-          <ul className="list-group">
-            {connectedUsers.map((user, index) => (
-              <li key={index} className="list-group-item">
-                {user}
-              </li>
+    <div className="d-flex h-100 w-100">
+      <div className="col-3 p-3 bg-light border-end">
+        <h5>Chat Rooms</h5>
+        <h6>Connected user : {username}</h6>
+        <h6>Bio : </h6>
+        <button className="btn btn-primary mb-3" onClick={handleEditUser}>Edit Profile</button>
+        <button className="btn btn-danger mb-3" onClick={handleLogout}>Logout</button>
+        <div className="mb-4">
+          <select className="form-select" size="7" aria-label="Chat rooms">
+            {rooms.map((room) => (
+              <option key={room._id} onClick={() => handleJoinRoom(room.name)}>
+                {room.name}
+              </option>
             ))}
-          </ul>
+          </select>
         </div>
-        <div className="col-md-9 d-flex flex-column p-0">
-          <div className="bg-light border-bottom p-3">
-            <h5 className="mb-0">{currentRoom}</h5>
+        <form onSubmit={handleCreateRoom} className="mb-4">
+          <div className="input-group">
+            <input
+              type="text"
+              className="form-control"
+              value={newRoomName}
+              onChange={(e) => setNewRoomName(e.target.value)}
+              placeholder="New room name"
+            />
+            <button type="submit" className="btn btn-primary">Create</button>
           </div>
-          <div className="flex-grow-1 p-3 overflow-auto" style={{ maxHeight: 'calc(100vh - 200px)' }}>
-            {messages.map((msg, index) => (
-              <div key={index} className="mb-3">
-                <div className="fw-bold">{msg.username}:</div>
+        </form>
+        <hr />
+        <h5>Connected Users</h5>
+        <ul className="list-group">
+          {connectedUsers.map((user, index) => (
+            <li key={index} className="list-group-item ">
+              {user}
+            </li>
+          ))}
+        </ul>
+      </div>
+      <div className="col-9 d-flex flex-column p-0 position-relative">
+        <div className="bg-light border-bottom p-3">
+          <h5 className="mb-0">{currentRoom}</h5>
+        </div>
+        <div className="flex-grow-1 p-2 overflow-scroll" >
+          {messages.map((msg, index) => (
+            <div key={index} className={`p-1 m-2 border ${msg.username === username ? '' : ''}`}>
+              <div key={index} className={`border m-1 border ${msg.username === username ? 'border-success' : ''}`}>
+                <div className="fw-bold ">{msg.username} :</div>
                 <div>{msg.message}</div>
               </div>
-            ))}
-          </div>
-          <footer className="border-top p-3">
-            <form onSubmit={handleSendMessage} className="d-flex">
-              <input
-                type="text"
-                className="form-control me-2"
-                value={newMessage}
-                onChange={(e) => setNewMessage(e.target.value)}
-                placeholder="Enter your message"
-              />
-              <button type="submit" className="btn btn-primary">Send</button>
-            </form>
-          </footer>
+            </div>
+          ))}
         </div>
+        <footer className="border-top p-3">
+          <form onSubmit={handleSendMessage} className="d-flex">
+            <input
+              type="text"
+              className="form-control me-2"
+              value={newMessage}
+              onChange={(e) => setNewMessage(e.target.value)}
+              placeholder="Enter your message"
+            />
+            <button type="submit" className="btn btn-primary">Send</button>
+          </form>
+        </footer>
       </div>
       {isModalOpen && <UserModal setUsername={setUsername} username={username} setIsModalOpen={setIsModalOpen} />}
     </div>
